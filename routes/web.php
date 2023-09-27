@@ -1,13 +1,16 @@
 <?php
 namespace App\Http\Controllers;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\VendorController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\BrandController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\RedirectIfAuthenticated;
 use Illuminate\Support\Facades\Route;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +22,6 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-
-
 
 Route::middleware(['auth','role:admin'])->group(function (){
     Route::get('/admin/dashboard/',[AdminController::class,'adminDashboard'])->name('admin.Dashboard');
@@ -36,7 +36,8 @@ Route::middleware(['auth','role:admin'])->group(function (){
     Route::resource('products',ProductController::class);
 });
 
-Route::get('/admin/login',[AdminController::class,'AdminLogin']);
+Route::get('/admin/login',[AdminController::class,'AdminLogin'])->middleware(RedirectIfAuthenticated :: class);
+Route::get('/vendor/login',[AdminController::class,'VendorLogin'])->middleware(RedirectIfAuthenticated :: class);
 
 Route::middleware(['auth','role:vendor'])->group(function (){
 
