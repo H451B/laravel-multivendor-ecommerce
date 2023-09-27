@@ -1,7 +1,7 @@
 <nav id="sidebar" class="sidebar js-sidebar">
     <div class="sidebar-content js-simplebar">
         <a class="sidebar-brand" href="index.html">
-            <span class="align-middle">AdminKit</span>
+            <span class="align-middle">VendorKit</span>
         </a>
 
         <ul class="sidebar-nav">
@@ -10,13 +10,13 @@
             </li>
 
             <li class="sidebar-item active">
-                <a class="sidebar-link" href="{{route('admin.Dashboard')}}">
+                <a class="sidebar-link" href="{{route('vendor.Dashboard')}}">
                     <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="{{route('admin.profile')}}">
+                <a class="sidebar-link" href="{{route('vendor.Profile')}}">
                     <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
                 </a>
             </li>
@@ -28,20 +28,14 @@
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="{{route('sliders.index')}}">
-                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Slider</span>
-                </a>
-            </li>
-
-            <li class="sidebar-item">
                 <a class="sidebar-link" href="{{route('categories.index')}}">
-                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">categories</span>
+                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Categories</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
                 <a class="sidebar-link" href="{{route('products.index')}}">
-                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">products</span>
+                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Products</span>
                 </a>
             </li>
 

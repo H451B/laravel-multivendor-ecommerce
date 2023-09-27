@@ -23,7 +23,9 @@ use Illuminate\Support\Facades\Route;
 
 
 
-
+/*
+ * admin operations
+ */
 Route::middleware(['auth','role:admin'])->group(function (){
     Route::get('/admin/dashboard/',[AdminController::class,'adminDashboard'])->name('admin.Dashboard');
 
@@ -44,16 +46,24 @@ Route::get('/admin/login',[AdminController::class,'AdminLogin'])->middleware(Red
 
 Route::get('/vendor/login',[AdminController::class,'VendorLogin'])->middleware(RedirectIfAuthenticated ::class);
 
+/*
+ * vendor operations
+ */
 Route::middleware(['auth','role:vendor'])->group(function (){
 
     Route::get('/vendor/dashboard/',[VendorController::class,'vendorDashboard'])->name('vendor.Dashboard');
+
+    Route::get('/vendor/profile',[VendorController::class,'vendorProfile'])->name('vendor.Profile');
+
+    Route::resource('brands',BrandController::class);
+    Route::resource('categories',CategoryController::class);
 
 });
 
 
 Route::get('/', function () {
     return view('frontend.index');
-});
+})->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
