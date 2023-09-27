@@ -53,17 +53,21 @@
 
 
     <td>
-        <a class="btn btn-info btn-sm" href="{{route('products.show',['product' =>$product->id])}}">show</a>
-        <a class="btn btn-warning btn-sm" href="{{route('products.edit',['product' =>$product->id])}}">Edit</a>
-        <form style="display: inline" action="{{route('products.destroy',['product'=>$product->id])}}"
-        method="post">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('are you sure want to delete?')">Delete</button>
 
-        </form>
+                                <a class="btn btn-primary" href="{{route('products.show', ['product'=>$product->id])}}">Show </a>
+                                <a class="btn btn-success" href="{{route('products.edit', ['product'=>$product->id])}}">Edit </a>
+                                <form style="display: inline" action="{{route('products.destroy', ['product'=>$product->id])}}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('are you really want to delete this')">Delete</button>
 
-    </td>
+                                    @if ($product->status == 1)
+                                    <a href="{{route('product.inactive',$product->id)}}" class="btn btn-primary" title="Inactive"><i class="fa-solid fa  fa-thumbs-up"></i></a>
+                                @else
+                                <a href="{{route('product.active',$product->id)}}" class="btn btn-primary" title="Active"><i class="fa-solid fa  fa-thumbs-down"></i></a>
+                                @endif
+                                </form>
+                            </td>
 
 </tr>
 
