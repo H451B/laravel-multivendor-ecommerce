@@ -1,16 +1,14 @@
 <?php
 namespace App\Http\Controllers;
-use App\Http\Controllers\BrandController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\VendorController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProductController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use Illuminate\Support\Facades\Route;
-
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +21,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+
 Route::middleware(['auth','role:admin'])->group(function (){
     Route::get('/admin/dashboard/',[AdminController::class,'adminDashboard'])->name('admin.Dashboard');
 
@@ -34,10 +35,14 @@ Route::middleware(['auth','role:admin'])->group(function (){
     Route::resource('categories',CategoryController::class);
     Route::resource('sliders',SliderController::class);
     Route::resource('products',ProductController::class);
+
+    Route::get('/product/inactive/{id}',[ProductController::class,'ProductInactive'])->name('product.inactive');
+    Route::get('/product/active/{id}',[ProductController::class,'ProductActive'])->name('product.active');
 });
 
-Route::get('/admin/login',[AdminController::class,'AdminLogin'])->middleware(RedirectIfAuthenticated :: class);
-Route::get('/vendor/login',[AdminController::class,'VendorLogin'])->middleware(RedirectIfAuthenticated :: class);
+Route::get('/admin/login',[AdminController::class,'AdminLogin'])->middleware(RedirectIfAuthenticated ::class);
+
+Route::get('/vendor/login',[AdminController::class,'VendorLogin'])->middleware(RedirectIfAuthenticated ::class);
 
 Route::middleware(['auth','role:vendor'])->group(function (){
 
@@ -59,8 +64,5 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-Route::get('/product/inactive/{id}',[ProductController::class,'ProductInactive'])->name('product.inactive');
-Route::get('/product/active/{id}',[ProductController::class,'ProductActive'])->name('product.active');
 
 require __DIR__.'/auth.php';

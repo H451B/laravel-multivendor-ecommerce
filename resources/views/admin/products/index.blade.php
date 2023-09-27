@@ -1,10 +1,5 @@
 <x-admin.layouts.admin_master>
-<!-- ---------edit
-    <div class="row">
-                        <div class="col"><h4 class="card-title mb-0">Products</h4></div>
-                        <div class="col"><h4 class="d-flex justify-content-center">Total {{count($products)}} Products</h4></div>
-                        <div class="col"><h4 class="pull-right d-flex justify-content-end"><a href="{{route('products.create')}}">Create Product</a></h4></div>
-                    </div> -->
+
 <div class="row">
 <div class="col-12 col-lg-12 col-xxl-12 d-flex">
     <div class="card flex-fill">
@@ -12,7 +7,11 @@
         <h2 class="card-title mb-0">Create Slider</h2>
         <div class="pull-right">
             <a class=" btn btn-info" href="{{route('products.create')}}">Back</a>
+            <li class="breadcrumb-item active" aria-current="page" style="display: inline">All Product
+                <span class="badge rounded-pill bg-danger">{{count($products)}}</span>
+            </li>
         </div>
+
     </div>
 <table class="table table-hover my-0">
 <thead>
@@ -58,21 +57,22 @@
 
 
     <td>
+        <a class="btn btn-info btn-sm" href="{{route('products.show',['product' =>$product->id])}}">show</a>
+        <a class="btn btn-warning btn-sm" href="{{route('products.edit',['product' =>$product->id])}}">Edit</a>
+        <form style="display: inline" action="{{route('products.destroy',['product'=>$product->id])}}"
+        method="post">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('are you sure want to delete?')">Delete</button>
 
-                                <a class="btn btn-primary" href="{{route('products.show', ['product'=>$product->id])}}">Show </a>
-                                <a class="btn btn-success" href="{{route('products.edit', ['product'=>$product->id])}}">Edit </a>
-                                <form style="display: inline" action="{{route('products.destroy', ['product'=>$product->id])}}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('are you really want to delete this')">Delete</button>
+            @if($product->status ==1)
+                <a href="{{route('product.inactive',$product->id)}}" class="btn btn-primary" title="Inactive"><i class="fa-solid fa fa-thumbs-up"></i></a>
+            @else
+                <a href="{{route('product.active',$product->id)}}" class="btn btn-primary" title="Active"><i class="fa-solid fa fa-thumbs-down"></i></a>
+            @endif
+        </form>
 
-                                    @if ($product->status == 1)
-                                    <a href="{{route('product.inactive',$product->id)}}" class="btn btn-primary" title="Inactive"><i class="fa-solid fa  fa-thumbs-up"></i></a>
-                                @else
-                                <a href="{{route('product.active',$product->id)}}" class="btn btn-primary" title="Active"><i class="fa-solid fa  fa-thumbs-down"></i></a>
-                                @endif
-                                </form>
-                            </td>
+    </td>
 
 </tr>
 

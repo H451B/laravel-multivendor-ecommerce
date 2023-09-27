@@ -20,6 +20,11 @@ class AdminController extends Controller
         return view('admin.admin_login');
     }
 
+    public function VendorLogin()
+    {
+        return view('vendor.vendor_login');
+    }
+
     public function adminProfile()
 
     {
