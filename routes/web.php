@@ -59,4 +59,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/product/inactive/{id}',[ProductController::class,'ProductInactive'])->name('product.inactive');
+Route::get('/product/active/{id}',[ProductController::class,'ProductActive'])->name('product.active');
+
 require __DIR__.'/auth.php';
