@@ -1,5 +1,10 @@
 <x-admin.layouts.admin_master>
-
+<!-- ---------edit
+    <div class="row">
+                        <div class="col"><h4 class="card-title mb-0">Products</h4></div>
+                        <div class="col"><h4 class="d-flex justify-content-center">Total {{count($products)}} Products</h4></div>
+                        <div class="col"><h4 class="pull-right d-flex justify-content-end"><a href="{{route('products.create')}}">Create Product</a></h4></div>
+                    </div> -->
 <div class="row">
 <div class="col-12 col-lg-12 col-xxl-12 d-flex">
     <div class="card flex-fill">
