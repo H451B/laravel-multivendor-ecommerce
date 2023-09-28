@@ -38,4 +38,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Check if the user is a vendor.
+     *
+     * @return bool
+     */
+    // public function isVendor()
+    // {
+    //     // Assuming you have a 'role' column in your users table
+    //     // and the role value for vendors is 'vendor'
+    //     return $this->role === 'vendor';
+    // }
 }

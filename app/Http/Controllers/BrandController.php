@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brand;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Image;
 
@@ -13,6 +14,11 @@ class BrandController extends Controller
      */
     public function index()
     {
+        // if (auth()->check() && auth()->user()->isVendor()) {
+        //     // If the user is a vendor, fetch brands associated with their vendor ID
+        //     $brands = Brand::all();
+        //     return view('vendor.brands.index', compact('brands'));
+        // }
         $brands = Brand::all();
         return view('admin.brands.index',compact('brands'));
     }

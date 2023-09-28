@@ -13,6 +13,15 @@ class ProductController extends Controller
 
     public function index()
     {
+        // if (auth()->check() && auth()->user()->isVendor()) {
+        //     // If the user is a vendor, fetch brands associated with their vendor ID
+        //     $vendorId = auth()->user()->id;
+
+        //     // Fetch brands for the specific vendor
+        //     $products = Product::where('vendor_id', $vendorId)->get();
+        //     return view('vendor.products.index', compact('products'));
+        // }
+
         $products = Product::latest()->get();
         return view('admin.products.index',compact('products'));
     }
@@ -145,6 +154,15 @@ class ProductController extends Controller
     {
         Product::findOrFail($id)->update(['status' => 1]);
         return redirect()->route('products.index');
+    }
+
+    public function showDetails($id)
+    {
+        // Fetch product details based on $id
+        $product = Product::findOrFail($id);
+
+        // Pass $product to the view and render the details page
+        return view('frontend.details', compact('product'));
     }
 
 

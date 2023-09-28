@@ -55,8 +55,9 @@ Route::middleware(['auth','role:vendor'])->group(function (){
 
     Route::get('/vendor/profile',[VendorController::class,'vendorProfile'])->name('vendor.Profile');
 
-    Route::resource('brands',BrandController::class);
-    Route::resource('categories',CategoryController::class);
+    // Route::resource('brands',BrandController::class);
+    // Route::resource('categories',CategoryController::class);
+    // Route::resource('products',ProductController::class);
 
 });
 
@@ -64,6 +65,16 @@ Route::middleware(['auth','role:vendor'])->group(function (){
 Route::get('/', function () {
     return view('frontend.index');
 })->name('home');
+
+// Route::get('/details', function () {
+//     return view('frontend.details');
+// })->name('details');
+Route::get('details/{id}', [ProductController::class, 'showDetails'])->name('details');
+// Route::resource('brands',BrandController::class);
+
+Route::get('/aboutus', function () {
+    return view('frontend.aboutus');
+})->name('aboutus');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

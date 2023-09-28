@@ -20,7 +20,7 @@ $products = App\Models\Product::where('status',1)->orderBy('id','ASC')->limit(10
   @foreach($products as $product)
  <div class="product product-style-2 equal-elem ">
     <div class="product-thumnail">
-        <a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
+        <a href="{{route('details',['id' =>$product->id])}}" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
         <figure><img src="{{asset("$product->product_image")}}" width="800" height="800" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
   </a>
     <div class="group-flash">
