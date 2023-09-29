@@ -1,3 +1,9 @@
+@php
+
+  $categories = App\Models\Category::orderBy('category_name','ASC')->get();
+
+@endphp
+
 <header id="header" class="header header-style-1">
     <div class="container-fluid">
         <div class="row">
@@ -46,7 +52,10 @@
                 <div class="mid-section main-info-area">
 
                     <div class="wrap-logo-top left-section">
-                        <a href="index.html" class="link-to-home"><img src="{{asset('ui/frontend/assets/images/logo-top-1.png')}}" alt="mercado"></a>
+                        <a href="{{route('home')}}" class="link-to-home">
+                            <!-- <img src="{{asset('ui/frontend/assets/images/logo-top-1.png')}}" alt="mercado"> -->
+                            <p style="font-size: 4rem; font-weight:bolder; color:green;">eBazar</p>
+                        </a>
                     </div>
 
                     <div class="wrap-search center-section">
@@ -58,23 +67,9 @@
                                     <input type="hidden" name="product-cate" value="0" id="product-cate">
                                     <a href="#" class="link-control">All Category</a>
                                     <ul class="list-cate">
-                                        <li class="level-0">All Category</li>
-                                        <li class="level-1">-Electronics</li>
-                                        <li class="level-2">Batteries & Chargens</li>
-                                        <li class="level-2">Headphone & Headsets</li>
-                                        <li class="level-2">Mp3 Player & Acessories</li>
-                                        <li class="level-1">-Smartphone & Table</li>
-                                        <li class="level-2">Batteries & Chargens</li>
-                                        <li class="level-2">Mp3 Player & Headphones</li>
-                                        <li class="level-2">Table & Accessories</li>
-                                        <li class="level-1">-Electronics</li>
-                                        <li class="level-2">Batteries & Chargens</li>
-                                        <li class="level-2">Headphone & Headsets</li>
-                                        <li class="level-2">Mp3 Player & Acessories</li>
-                                        <li class="level-1">-Smartphone & Table</li>
-                                        <li class="level-2">Batteries & Chargens</li>
-                                        <li class="level-2">Mp3 Player & Headphones</li>
-                                        <li class="level-2">Table & Accessories</li>
+                                        @foreach($categories as $category)
+                                        <li class="level-0">{{$category->category_name}}</li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </form>
