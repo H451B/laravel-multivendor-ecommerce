@@ -13,7 +13,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        // if (auth()->check() && auth()->user()->isVendor()) {
+        // if (auth()->user()->isVendor()) {
         //     // If the user is a vendor, fetch brands associated with their vendor ID
         //     $vendorId = auth()->user()->id;
 

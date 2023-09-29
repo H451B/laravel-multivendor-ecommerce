@@ -55,7 +55,7 @@ Route::middleware(['auth','role:vendor'])->group(function (){
 
     Route::get('/vendor/profile',[VendorController::class,'vendorProfile'])->name('vendor.Profile');
 
-    // Route::resource('brands',BrandController::class);
+    // Route::resource('/vendor/brands',BrandController::class);
     // Route::resource('categories',CategoryController::class);
     // Route::resource('products',ProductController::class);
 
