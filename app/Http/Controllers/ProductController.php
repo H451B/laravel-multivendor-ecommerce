@@ -10,20 +10,31 @@ use Illuminate\Http\Request;
 use Image;
 class ProductController extends Controller
 {
+    private function getProductView($action)
+    {
+        $roleViewPrefix = auth()->user()->isVendor() ? 'vendor.products.' : 'admin.products.';
+
+        return $roleViewPrefix . $action;
+    }
 
     public function index()
     {
         // if (auth()->user()->isVendor()) {
-        //     // If the user is a vendor, fetch brands associated with their vendor ID
+        //     // If the user is a vendor, fetch products associated with their vendor ID
         //     $vendorId = auth()->user()->id;
 
-        //     // Fetch brands for the specific vendor
+        //     // Fetch products for the specific vendor
         //     $products = Product::where('vendor_id', $vendorId)->get();
         //     return view('vendor.products.index', compact('products'));
         // }
 
-        $products = Product::latest()->get();
-        return view('admin.products.index',compact('products'));
+        // $products = Product::latest()->get();
+        // return view('admin.products.index',compact('products'));
+        $products = auth()->user()->isVendor()
+            ? Product::where('vendor_id', auth()->user()->id)->get()
+            : Product::latest()->get();
+
+        return view($this->getProductView('index'), compact('products'));
     }
 
     /**
@@ -31,10 +42,13 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $activeVendor = User::where('status','active')->where('role','vendor')->latest()->get();
+        auth()->user()->isVendor()
+            ? $activeVendor = User::where('id', auth()->user()->id)->latest()->get()
+            : $activeVendor = User::where('status','active')->where('role','vendor')->latest()->get();
+        
         $brands = Brand::latest()->get();
         $categories = Category::latest()->get();
-        return view('admin.products.create',compact('brands','categories','activeVendor'));
+        return view($this->getProductView('create'),compact('brands','categories','activeVendor'));
     }
 
     /**
@@ -71,7 +85,8 @@ class ProductController extends Controller
             'created_at'=>Carbon::now(),
         ]);
 
-        return redirect()->route('products.index');
+        // return redirect()->route('products.index');
+        return auth()->user()->isVendor() ? redirect()->route('vendor.products.index') : redirect()->route('admin.products.index');
     }
 
     /**
@@ -79,9 +94,12 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('admin.products.show',[
+        return view($this->getProductView('index'), [
             'product'=>$product
         ]);
+        // return view('admin.products.show',[
+        //     'product'=>$product
+        // ]);
     }
 
     /**
@@ -89,11 +107,14 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $activeVendor = User::where('status','active')->where('role','vendor')->latest()->get();
+        // $activeVendor = User::where('status','active')->where('role','vendor')->latest()->get();
+        auth()->user()->isVendor()
+            ? $activeVendor = User::wherewhere('vendor_id', auth()->user()->id)->latest()->get()
+            : $activeVendor = User::where('status','active')->where('role','vendor')->latest()->get();
         $brands = Brand::latest()->get();
         $categories = Category::latest()->get();
-        return view('admin.products.edit',['product'=>$product],compact('brands','categories','activeVendor'));
-
+        // return view('admin.products.edit',['product'=>$product],compact('brands','categories','activeVendor'));
+        return view($this->getProductView('edit'), compact('brands', 'categories', 'activeVendor'));
 
     }
 
@@ -108,7 +129,7 @@ class ProductController extends Controller
             $image->getClientOriginalExtension();
         Image::make($image)->resize(800,800)->save('upload/product/'.$fileName);
         $save_url = 'upload/product/'.$fileName;
-       $product->update([
+        $product->update([
             'brand_id'=>$request->brand_id,
             'category_id'=>$request->category_id,
             'product_name'=>$request->product_name,
@@ -132,7 +153,8 @@ class ProductController extends Controller
             'created_at'=>Carbon::now(),
         ]);
 
-        return redirect()->route('products.index');
+        // return redirect()->route('products.index');
+        return auth()->user()->isVendor() ? redirect()->route('vendor.products.index') : redirect()->route('admin.products.index');
     }
 
     /**
@@ -147,13 +169,15 @@ class ProductController extends Controller
     public function ProductInactive($id)
     {
         Product::findOrFail($id)->update(['status' => 0]);
-        return redirect()->route('products.index');
+        // return redirect()->route('products.index');
+        return auth()->user()->isVendor() ? redirect()->route('vendor.products.index') : redirect()->route('admin.products.index');
     }
 
     public function ProductActive($id)
     {
         Product::findOrFail($id)->update(['status' => 1]);
-        return redirect()->route('products.index');
+        // return redirect()->route('products.index');
+        return auth()->user()->isVendor() ? redirect()->route('vendor.products.index') : redirect()->route('admin.products.index');
     }
 
     public function showDetails($id)

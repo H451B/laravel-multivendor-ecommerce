@@ -3,12 +3,12 @@
         <h1 class="h3 mb-3"> products</h1>
 
         <div class="card-header">
-            Create products <a class="btn btn-info" href="{{route('products.index')}}">List</a>
+            Create products <a class="btn btn-info" href="{{route('vendor.products.index')}}">List</a>
 
         </div>
 
         <div class="card-body">
-            <form action="{{route('products.store')}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('vendor.products.store')}}" method="post" enctype="multipart/form-data">
 
                 @csrf
 

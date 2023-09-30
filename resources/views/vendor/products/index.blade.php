@@ -6,7 +6,7 @@
     <div class="card-header">
         <h2 class="card-title mb-0">Create Slider</h2>
         <div class="pull-right">
-            <a class=" btn btn-info" href="{{route('products.create')}}">Back</a>
+            <a class=" btn btn-info" href="{{route('vendor.products.create')}}">Back</a>
             <li class="breadcrumb-item active" aria-current="page" style="display: inline">All Product
                 <span class="badge rounded-pill bg-danger">{{count($products)}}</span>
             </li>
@@ -57,18 +57,18 @@
 
 
     <td>
-        <a class="btn btn-info btn-sm" href="{{route('products.show',['product' =>$product->id])}}">show</a>
-        <a class="btn btn-warning btn-sm" href="{{route('products.edit',['product' =>$product->id])}}">Edit</a>
-        <form style="display: inline" action="{{route('products.destroy',['product'=>$product->id])}}"
+        <a class="btn btn-info btn-sm" href="{{route('vendor.products.show',['product' =>$product->id])}}">show</a>
+        <a class="btn btn-warning btn-sm" href="{{route('vendor.products.edit',['product' =>$product->id])}}">Edit</a>
+        <form style="display: inline" action="{{route('vendor.products.destroy',['product'=>$product->id])}}"
         method="post">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('are you sure want to delete?')">Delete</button>
 
             @if($product->status ==1)
-                <a href="{{route('product.inactive',$product->id)}}" class="btn btn-primary" title="Inactive"><i class="fa-solid fa fa-thumbs-up"></i></a>
+                <a href="{{route('vendor.product.inactive',$product->id)}}" class="btn btn-primary" title="Inactive"><i class="fa-solid fa fa-thumbs-up"></i></a>
             @else
-                <a href="{{route('product.active',$product->id)}}" class="btn btn-primary" title="Active"><i class="fa-solid fa fa-thumbs-down"></i></a>
+                <a href="{{route('vendor.product.active',$product->id)}}" class="btn btn-primary" title="Active"><i class="fa-solid fa fa-thumbs-down"></i></a>
             @endif
         </form>
 

@@ -5,7 +5,7 @@
         <div class="card flex-fill">
             <div class="card-header">
 
-                show Brand <a class="btn btn-info" href="{{route('products.index')}}">List</a>
+                show Brand <a class="btn btn-info" href="{{route('vendor.products.index')}}">List</a>
             </div>
 
             <h2> Title:{{$product->slider_title}}</h2>

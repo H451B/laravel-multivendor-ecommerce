@@ -1,11 +1,11 @@
 <x-admin.layouts.admin_master>
 
     <div class="card-header">
-        Edit brand <a class="btn btn-info" href="{{route('products.index')}}">List</a>
+        Edit brand <a class="btn btn-info" href="{{route('vendor.products.index')}}">List</a>
     </div>
 
     <div class="card-body">
-        <form action="{{route('products.update',['product'=>$product->id])}}" method="post"  enctype="multipart/form-data">
+        <form action="{{route('vendor.products.update',['product'=>$product->id])}}" method="post"  enctype="multipart/form-data">
             @csrf
             @method('patch')
 

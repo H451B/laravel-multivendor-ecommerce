@@ -44,10 +44,10 @@ class User extends Authenticatable
      *
      * @return bool
      */
-    // public function isVendor()
-    // {
-    //     // Assuming you have a 'role' column in your users table
-    //     // and the role value for vendors is 'vendor'
-    //     return $this->role === 'vendor';
-    // }
+    public function isVendor()
+    {
+        // Assuming you have a 'role' column in your users table
+        // and the role value for vendors is 'vendor'
+        return $this->role === 'vendor';
+    }
 }

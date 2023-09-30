@@ -22,19 +22,19 @@
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="{{route('brands.index')}}">
+                <a class="sidebar-link" href="">
                     <i class="align-middle" data-feather="book"></i> <span class="align-middle">Brands</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="{{route('categories.index')}}">
+                <a class="sidebar-link" href="">
                     <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Categories</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="{{route('products.index')}}">
+                <a class="sidebar-link" href="{{route('vendor.products.index')}}">
                     <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Products</span>
                 </a>
             </li>

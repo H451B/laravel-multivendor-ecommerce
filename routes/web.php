@@ -22,9 +22,44 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+/*
+ * Home Page
+ */
+Route::get('/', function () {
+    return view('frontend.index');
+})->name('home');
 
 /*
- * admin operations
+ * Single Product Details
+ */
+// Route::get('/details', function () {
+//     return view('frontend.details');
+// })->name('details');
+Route::get('details/{id}', [ProductController::class, 'showDetails'])->name('details');
+
+/*
+ * About Us page
+ */
+Route::get('/aboutus', function () {
+    return view('frontend.aboutus');
+})->name('aboutus');
+
+
+/*
+ * Inbuilt Dashboard & Profile
+ */
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+/*
+ * Custom Admin Dashboard & Operations
  */
 Route::middleware(['auth','role:admin'])->group(function (){
     Route::get('/admin/dashboard/',[AdminController::class,'adminDashboard'])->name('admin.Dashboard');
@@ -36,6 +71,7 @@ Route::middleware(['auth','role:admin'])->group(function (){
     Route::resource('brands',BrandController::class);
     Route::resource('categories',CategoryController::class);
     Route::resource('sliders',SliderController::class);
+    // Route::resource('products',ProductController::class);
     Route::resource('products',ProductController::class);
 
     Route::get('/product/inactive/{id}',[ProductController::class,'ProductInactive'])->name('product.inactive');
@@ -47,7 +83,7 @@ Route::get('/admin/login',[AdminController::class,'AdminLogin'])->middleware(Red
 Route::get('/vendor/login',[AdminController::class,'VendorLogin'])->middleware(RedirectIfAuthenticated ::class);
 
 /*
- * vendor operations
+ * Custom Vendor Dashboard & Operations
  */
 Route::middleware(['auth','role:vendor'])->group(function (){
 
@@ -57,33 +93,20 @@ Route::middleware(['auth','role:vendor'])->group(function (){
 
     // Route::resource('/vendor/brands',BrandController::class);
     // Route::resource('categories',CategoryController::class);
-    // Route::resource('products',ProductController::class);
+    Route::resource('/vendor/products',ProductController::class)->names([
+        'index' => 'vendor.products.index',
+        'create' => 'vendor.products.create',
+        'store' => 'vendor.products.store',
+        'show' => 'vendor.products.show',
+        'edit' => 'vendor.products.edit',
+        'update' => 'vendor.products.update',
+        'destroy' => 'vendor.products.destroy',
+    ]);
+
+    Route::get('/vendor/product/inactive/{id}',[ProductController::class,'ProductInactive'])->name('vendor.product.inactive');
+    Route::get('/vendor/product/active/{id}',[ProductController::class,'ProductActive'])->name('vendor.product.active');
 
 });
 
-
-Route::get('/', function () {
-    return view('frontend.index');
-})->name('home');
-
-// Route::get('/details', function () {
-//     return view('frontend.details');
-// })->name('details');
-Route::get('details/{id}', [ProductController::class, 'showDetails'])->name('details');
-// Route::resource('brands',BrandController::class);
-
-Route::get('/aboutus', function () {
-    return view('frontend.aboutus');
-})->name('aboutus');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
 require __DIR__.'/auth.php';
