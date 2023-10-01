@@ -68,6 +68,8 @@ Route::middleware(['auth','role:admin'])->group(function (){
 
     Route::get('/admin/profile',[AdminController::class,'adminProfile'])->name('admin.profile');
 
+    Route::post('/admin/profile/store',[AdminController::class,'adminProfileStore'])->name('admin.profile.store');
+
     Route::resource('brands',BrandController::class);
     Route::resource('categories',CategoryController::class);
     Route::resource('sliders',SliderController::class);

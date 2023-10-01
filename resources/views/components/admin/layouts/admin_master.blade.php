@@ -21,6 +21,8 @@
 
     <link href="{{asset('ui/backend/css/sb-admin-2.min.css')}}" rel="stylesheet">
     <link href="{{asset('ui/backend/css/dataTables.min.css')}}" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 
 <body>
