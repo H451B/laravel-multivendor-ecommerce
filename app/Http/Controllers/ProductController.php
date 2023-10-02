@@ -94,7 +94,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view($this->getProductView('index'), [
+        return view($this->getProductView('show'), [
             'product'=>$product
         ]);
         // return view('admin.products.show',[
@@ -114,7 +114,7 @@ class ProductController extends Controller
         $brands = Brand::latest()->get();
         $categories = Category::latest()->get();
         // return view('admin.products.edit',['product'=>$product],compact('brands','categories','activeVendor'));
-        return view($this->getProductView('edit'), compact('brands', 'categories', 'activeVendor'));
+        return view($this->getProductView('edit'),['product'=>$product], compact('brands', 'categories', 'activeVendor'));
 
     }
 
