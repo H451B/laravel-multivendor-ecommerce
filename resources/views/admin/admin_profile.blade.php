@@ -23,7 +23,7 @@
                                     <div class="d-flex flex-column align-items-center text-center">
                                         <img src="{{ asset(!empty($adminData->photo)) ? url('upload/admin_images/' . $adminData->photo) : url('upload/admin_images/aladin_image.jpg') }}"
                                             alt="" class="img-fluid rounded-circle mb-2" width="200"
-                                            height="150" />
+                                            height="200" />
                                         <div class="mt-3">
                                             <h4></h4>
                                             <p class="text-secondary mb-1"></p>
@@ -64,7 +64,7 @@
                                             </div>
                                             <div class="col-sm-9 text-secondary">
                                                 <input type="text" name="username" class="form-control"
-                                                    value="{{ $adminData->username }}" />
+                                                    value="{{ $adminData->username }}" disabled/>
                                             </div>
                                         </div>
                                         <div class="row mb-3">

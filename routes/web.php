@@ -68,12 +68,16 @@ Route::middleware(['auth','role:admin'])->group(function (){
 
     Route::get('/admin/profile',[AdminController::class,'adminProfile'])->name('admin.profile');
 
+    //change & store admin data
     Route::post('/admin/profile/store',[AdminController::class,'adminProfileStore'])->name('admin.profile.store');
+
+    // change password | store password
+    Route::get('/admin/change/password',[AdminController::class,'AdminChangePassword'])->name('admin.change.password');
+    Route::post('/admin/update/password',[AdminController::class,'AdminUpdatePassword'])->name('update.password');
 
     Route::resource('brands',BrandController::class);
     Route::resource('categories',CategoryController::class);
     Route::resource('sliders',SliderController::class);
-    // Route::resource('products',ProductController::class);
     Route::resource('products',ProductController::class);
 
     Route::get('/product/inactive/{id}',[ProductController::class,'ProductInactive'])->name('product.inactive');
