@@ -23,6 +23,10 @@
     <link href="{{asset('ui/backend/css/dataTables.min.css')}}" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <!-- test table -->
+    <link href="{{asset('ui/backend/css/style.css')}}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -53,8 +57,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/d3js/7.8.5/d3.min.js"></script>
     <script src="{{asset('ui/backend/js/sb-admin-2.min.js')}}"></script>
     <!-- Page level plugins -->
-    <script src="{{asset('ui/backend/js/jdataTables.min.js')}}"></script>
-    <script src="{{asset('ui/backend/js/dataTables.min.js')}}"></script>
+    <!-- <script src="{{asset('ui/backend/js/jdataTables.min.js')}}"></script>
+    <script src="{{asset('ui/backend/js/dataTables.min.js')}}"></script> -->
+
+    <!-- {test table} -->
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+    <script src="{{asset('ui/backend/js/datatables-simple-demo.js')}}"></script>
 
     <!-- Page level custom scripts -->
     <script src="{{asset('ui/backend/js/ddatatables.min.js')}}"></script>
