@@ -40,7 +40,7 @@ class BrandController extends Controller
         $image =$request->file('brand_image');
         $fileName = hexdec(uniqid()).'.'.
             $image->getClientOriginalExtension();
-        Image::make($image)->resize(300,300)->save('upload/brand/'.$fileName);
+        'Image'::make($image)->resize(300,300)->save('upload/brand/'.$fileName);
         $save_url = 'upload/brand/'.$fileName;
         Brand::create([
             'brand_name'=>$request->brand_name,
@@ -77,7 +77,7 @@ class BrandController extends Controller
         $image =$request->file('brand_image');
         $fileName = hexdec(uniqid()).'.'.
             $image->getClientOriginalExtension();
-        Image::make($image)->resize(300,300)->save('upload/brand/'.$fileName);
+        'Image'::make($image)->resize(300,300)->save('upload/brand/'.$fileName);
         $save_url = 'upload/brand/'.$fileName;
         $brand->update([
             'brand_name'=>$request->brand_name,

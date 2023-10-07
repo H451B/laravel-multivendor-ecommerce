@@ -59,7 +59,7 @@ class ProductController extends Controller
         $image =$request->file('product_image');
         $fileName = hexdec(uniqid()).'.'.
             $image->getClientOriginalExtension();
-        Image::make($image)->resize(800,800)->save('upload/product/'.$fileName);
+        'Image'::make($image)->resize(800,800)->save('upload/product/'.$fileName);
         $save_url = 'upload/product/'.$fileName;
         Product::create([
             'brand_id'=>$request->brand_id,
@@ -127,7 +127,7 @@ class ProductController extends Controller
         $image =$request->file('product_image');
         $fileName = hexdec(uniqid()).'.'.
             $image->getClientOriginalExtension();
-        Image::make($image)->resize(800,800)->save('upload/product/'.$fileName);
+        'Image'::make($image)->resize(800,800)->save('upload/product/'.$fileName);
         $save_url = 'upload/product/'.$fileName;
         $product->update([
             'brand_id'=>$request->brand_id,
