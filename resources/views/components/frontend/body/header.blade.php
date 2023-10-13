@@ -20,29 +20,6 @@
                         <ul>
                             <li class="menu-item" ><a title="Register or Login" href="{{ route('login') }}">Login</a></li>
                             <li class="menu-item" ><a title="Register or Login" href="{{ route('register') }}">Register</a></li>
-                            <li class="menu-item lang-menu menu-item-has-children parent">
-                                <a title="English" href="#"><span class="img label-before"><img src="{{asset('ui/frontend/assets/images/lang-en.png')}}" alt="lang-en"></span>English<i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                                <ul class="submenu lang" >
-                                    <li class="menu-item" ><a title="hungary" href="#"><span class="img label-before"><img src="{{asset('ui/frontend/assets/images/lang-hun.png')}}" alt="lang-hun"></span>Hungary</a></li>
-                                    <li class="menu-item" ><a title="german" href="#"><span class="img label-before"><img src="{{asset('ui/frontend/assets/images/lang-ger.png')}}" alt="lang-ger" ></span>German</a></li>
-                                    <li class="menu-item" ><a title="french" href="#"><span class="img label-before"><img src="{{asset('ui/frontend/assets/images/lang-fra.png')}}" alt="lang-fre"></span>French</a></li>
-                                    <li class="menu-item" ><a title="canada" href="#"><span class="img label-before"><img src="{{asset('ui/frontend/assets/images/lang-can.png')}}" alt="lang-can"></span>Canada</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item menu-item-has-children parent" >
-                                <a title="Dollar (USD)" href="#">Dollar (USD)<i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                                <ul class="submenu curency" >
-                                    <li class="menu-item" >
-                                        <a title="Pound (GBP)" href="#">Pound (GBP)</a>
-                                    </li>
-                                    <li class="menu-item" >
-                                        <a title="Euro (EUR)" href="#">Euro (EUR)</a>
-                                    </li>
-                                    <li class="menu-item" >
-                                        <a title="Dollar (USD)" href="#">Dollar (USD)</a>
-                                    </li>
-                                </ul>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -54,7 +31,7 @@
                     <div class="wrap-logo-top left-section">
                         <a href="{{route('home')}}" class="link-to-home">
                             <!-- <img src="{{asset('ui/frontend/assets/images/logo-top-1.png')}}" alt="mercado"> -->
-                            <p style="font-size: 4rem; font-weight:bolder; color:green;">eBazar</p>
+                            <p style="font-size: 4rem; font-weight:bolder; color:green;">VintageMart</p>
                         </a>
                     </div>
 
@@ -77,15 +54,6 @@
                     </div>
 
                     <div class="wrap-icon right-section">
-                        <div class="wrap-icon-section wishlist">
-                            <a href="#" class="link-direction">
-                                <i class="fa fa-heart" aria-hidden="true"></i>
-                                <div class="left-info">
-                                    <span class="index">0 item</span>
-                                    <span class="title">Wishlist</span>
-                                </div>
-                            </a>
-                        </div>
                         <div class="wrap-icon-section minicart">
                             <a href="#" class="link-direction">
                                 <i class="fa fa-shopping-basket" aria-hidden="true"></i>
@@ -108,18 +76,6 @@
             </div>
 
             <div class="nav-section header-sticky">
-                <div class="header-nav-section">
-                    <div class="container">
-                        <ul class="nav menu-nav clone-main-menu" id="mercado_haead_menu" data-menuname="Sale Info" >
-                            <li class="menu-item"><a href="#" class="link-term">Weekly Featured</a><span class="nav-label hot-label">hot</span></li>
-                            <li class="menu-item"><a href="#" class="link-term">Hot Sale items</a><span class="nav-label hot-label">hot</span></li>
-                            <li class="menu-item"><a href="#" class="link-term">Top new items</a><span class="nav-label hot-label">hot</span></li>
-                            <li class="menu-item"><a href="#" class="link-term">Top Selling</a><span class="nav-label hot-label">hot</span></li>
-                            <li class="menu-item"><a href="#" class="link-term">Top rated items</a><span class="nav-label hot-label">hot</span></li>
-                        </ul>
-                    </div>
-                </div>
-
                 <div class="primary-nav-section">
                     <div class="container">
                         <ul class="nav primary clone-main-menu" id="mercado_main" data-menuname="Main menu" >

@@ -55,15 +55,15 @@
                                     <ul>
                                         <li>
                                             <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                            <p class="contact-txt">45 Grand Central Terminal New York,NY 1017 United State USA</p>
+                                            <p class="contact-txt">Golpahar Chottogram Bangladesh</p>
                                         </li>
                                         <li>
                                             <i class="fa fa-phone" aria-hidden="true"></i>
-                                            <p class="contact-txt">(+123) 456 789 - (+123) 666 888</p>
+                                            <p class="contact-txt">(+880) xxx xxx - (+880) xxx xxx</p>
                                         </li>
                                         <li>
                                             <i class="fa fa-envelope" aria-hidden="true"></i>
-                                            <p class="contact-txt">Contact@yourcompany.com</p>
+                                            <p class="contact-txt">yyy@yyyy.com</p>
                                         </li>
                                     </ul>
                                 </div>
@@ -78,7 +78,7 @@
                             <div class="item-content">
                                 <div class="wrap-hotline-footer">
                                     <span class="desc">Call Us toll Free</span>
-                                    <b class="phone-number">(+123) 456 789 - (+123) 666 888</b>
+                                    <b class="phone-number">(+880) xxx xxx - (+880) xxx xxx</b>
                                 </div>
                             </div>
                         </div>
