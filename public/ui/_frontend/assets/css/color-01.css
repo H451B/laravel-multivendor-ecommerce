@@ -119,14 +119,14 @@
 .aboutus-info.style-small-left .list-showups label input[type="radio"]:checked + span.check-box,
 .wrap-articles article .info a.btn-to-post:hover
 {
-    border-color: #38b04a !important;
+    border-color: #62b16d !important;
 }
 .wrap-footer-content .wrap-function-info .fc-info-item
 {
-    border-color: #399d48 !important;
+    border-color: #50e766 !important;
 }
 .wrap-footer-content .wrap-function-info .fc-info-item .wrap-left-info .fc-desc{
-    color: #83e491 !important;
+    color: #8aff9c !important;
 }
 /*default hover color*/
 
@@ -134,7 +134,7 @@
 .header.fill-color .center-section .wrap-search-form button:hover,
 .fill-color.header-toggle .wrap-toggle-menu,
 .wrap-main-slide-2 .wrap-banners .btn:hover{
-    background-color: #009000;
+    background-color: #002400;
 }
 .fill-color.header-toggle .header-nav-section .menu-nav li a:hover{
     color: #444444 !important;

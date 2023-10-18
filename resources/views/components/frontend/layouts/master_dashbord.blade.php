@@ -1,47 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+
+  <head>
+
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home</title>
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('ui/frontend/assets/images/favicon.ico')}}">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,700,700italic,900,900italic&amp;subset=latin,latin-ext" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open%20Sans:300,400,400italic,600,600italic,700,700italic&amp;subset=latin,latin-ext" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{asset('ui/frontend/assets/css/animate.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('ui/frontend/assets/css/font-awesome.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('ui/frontend/assets/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('ui/frontend/assets/css/owl.carousel.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('ui/frontend/assets/css/chosen.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('ui/frontend/assets/css/style.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('ui/frontend/assets/css/color-01.css')}}">
-</head>
-<body class="home-page home-01 ">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-<!-- mobile menu -->
-<x-frontend.body.mobile/>
+    <title>VintageMotor</title>
 
-<!--header-->
 
-<x-frontend.body.header/>
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="a{{asset('ui/frontend/ssets/css/bootstrap.min.css')}}">
 
-<main id="main">
+    <link rel="stylesheet" type="text/css" href="{{asset('ui/frontend/assets/css/font-awesome.css')}}">
+
+    <link rel="stylesheet" href="{{asset('ui/frontend/assets/css/templatemo-hexashop.css')}}">
+
+    <link rel="stylesheet" href="{{asset('ui/frontend/assets/css/owl-carousel.css')}}">
+
+    <link rel="stylesheet" href="{{asset('ui/frontend/assets/css/lightbox.css')}}">
+<!--
+-->
+    </head>
+    
+    <body>
+    
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>  
+    <!-- ***** Preloader End ***** -->
+
+    
+    
+    
+    <!-- ***** Header Area Start ***** -->
+    
+    <!-- ***** Header Area End ***** -->
 
     {{$slot}}
+    
+    
+    <!-- ***** Footer Start ***** -->
+    <!-- ***** Footer Ends ****** -->
+    
 
-</main>
+    <!-- jQuery -->
+    <script src="{{asset('ui/frontend/assets/js/jquery-2.1.0.min.js')}}"></script>
 
-<x-frontend.body.footer/>
+    <!-- Bootstrap -->
+    <script src="{{asset('ui/frontend/assets/js/popper.js')}}"></script>
+    <script src="{{asset('ui/frontend/assets/js/bootstrap.min.js')}}"></script>
 
-<script src="{{asset('ui/frontend/assets/js/jquery-1.12.4.minb8ff.js?ver=1.12.4')}}"></script>
-<script src="{{asset('ui/frontend/assets/js/jquery-ui-1.12.4.minb8ff.js?ver=1.12.4')}}"></script>
-<script src="{{asset('ui/frontend/assets/js/bootstrap.min.js')}}"></script>
-<script src="{{asset('ui/frontend/assets/js/jquery.flexslider.js')}}"></script>
-<script src="{{asset('ui/frontend/assets/js/chosen.jquery.min.js')}}"></script>
-<script src="{{asset('ui/frontend/assets/js/owl.carousel.min.js')}}"></script>
-<script src="{{asset('ui/frontend/assets/js/jquery.countdown.min.js')}}"></script>
-<script src="{{asset('ui/frontend/assets/js/jquery.sticky.js')}}"></script>
-<script src="{{asset('ui/frontend/assets/js/functions.js')}}"></script>
-</body>
+    <!-- Plugins -->
+    <script src="{{asset('ui/frontend/assets/js/owl-carousel.js')}}"></script>
+    <script src="{{asset('ui/frontend/assets/js/accordions.js')}}"></script>
+    <script src="{{asset('ui/frontend/assets/js/datepicker.js')}}"></script>
+    <script src="{{asset('ui/frontend/assets/js/scrollreveal.min.js')}}"></script>
+    <script src="{{asset('ui/frontend/assets/js/waypoints.min.js')}}"></script>
+    <script src="{{asset('ui/frontend/assets/js/jquery.counterup.min.js')}}"></script>
+    <script src="{{asset('ui/frontend/assets/js/imgfix.min.js')}}"></script> 
+    <script src="{{asset('ui/frontend/assets/js/slick.js')}}"></script> 
+    <script src="{{asset('ui/frontend/assets/js/lightbox.js')}}"></script> 
+    <script src="{{asset('ui/frontend/assets/js/isotope.js')}}"></script> 
+    
+    <!-- Global Init -->
+    <script src="{{asset('ui/frontend/assets/js/custom.js')}}"></script>
+
+    <script>
+
+        $(function() {
+            var selectedClass = "";
+            $("p").click(function(){
+            selectedClass = $(this).attr("data-rel");
+            $("#portfolio").fadeTo(50, 0.1);
+                $("#portfolio div").not("."+selectedClass).fadeOut();
+            setTimeout(function() {
+              $("."+selectedClass).fadeIn();
+              $("#portfolio").fadeTo(50, 1);
+            }, 500);
+                
+            });
+        });
+
+    </script>
+
+  </body>
 </html>
-
