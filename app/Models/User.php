@@ -50,4 +50,14 @@ class User extends Authenticatable
         // and the role value for vendors is 'vendor'
         return $this->role === 'vendor';
     }
+
+    public function cart()
+    {
+        return $this->hasMany(Cart::class);
+    }
+
+    public function cartContains(Product $product)
+    {
+        return $this->cart->contains('product_id', $product->id);
+    }
 }

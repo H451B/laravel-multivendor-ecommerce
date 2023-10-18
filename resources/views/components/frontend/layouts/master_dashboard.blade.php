@@ -15,6 +15,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('ui/frontend/assets/css/chosen.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('ui/frontend/assets/css/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('ui/frontend/assets/css/color-01.css')}}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body class="home-page home-01 ">
 
@@ -42,6 +44,9 @@
 <script src="{{asset('ui/frontend/assets/js/jquery.countdown.min.js')}}"></script>
 <script src="{{asset('ui/frontend/assets/js/jquery.sticky.js')}}"></script>
 <script src="{{asset('ui/frontend/assets/js/functions.js')}}"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="{{ asset('ui/frontend/assets/js/cart-operation.js') }}"></script>
 </body>
 </html>
 

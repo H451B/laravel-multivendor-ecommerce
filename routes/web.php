@@ -44,6 +44,14 @@ Route::get('/aboutus', function () {
     return view('frontend.aboutus');
 })->name('aboutus');
 
+/*
+ * Cart Page
+ */
+Route::get('/cart', function () {
+    return view('frontend.cart');
+})->name('cart');
+Route::post('/update-quantity', [CartController::class, 'updateQuantity']);
+Route::post('/delete-cart-item', [CartController::class, 'deleteCartItem']);
 
 /*
  * Inbuilt Dashboard & Profile
@@ -113,6 +121,8 @@ Route::middleware(['auth','role:vendor'])->group(function (){
     Route::get('/vendor/product/active/{id}',[ProductController::class,'ProductActive'])->name('vendor.product.active');
 
 });
+
+Route::post('/cart/add/{product}', [CartController::class, 'create'])->name('cart.create');
 
 
 require __DIR__.'/auth.php';

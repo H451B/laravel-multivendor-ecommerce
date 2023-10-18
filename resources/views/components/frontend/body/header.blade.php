@@ -1,6 +1,6 @@
 @php
 
-  $categories = App\Models\Category::orderBy('category_name','ASC')->get();
+$categories = App\Models\Category::orderBy('category_name','ASC')->get();
 
 @endphp
 
@@ -11,15 +11,19 @@
                 <div class="container">
                     <div class="topbar-menu left-menu">
                         <ul>
-                            <li class="menu-item" >
-                                <a title="Hotline: (+123) 456 789" href="#" ><span class="icon label-before fa fa-mobile"></span>Hotline: (+123) 456 789</a>
+                            <li class="menu-item">
+                                <a title="Hotline: (+123) 456 789" href="#"><span class="icon label-before fa fa-mobile"></span>Hotline: (+123) 456 789</a>
                             </li>
                         </ul>
                     </div>
                     <div class="topbar-menu right-menu">
                         <ul>
-                            <li class="menu-item" ><a title="Register or Login" href="{{ route('login') }}">Login</a></li>
-                            <li class="menu-item" ><a title="Register or Login" href="{{ route('register') }}">Register</a></li>
+                            @if( Auth::user())
+                            <li class="menu-item"><a title="Register or Login" href="{{ route('dashboard') }}"><i class="fa-solid fa-user"></i> {{Auth::user()->name}}</a></li>
+                            @else
+                            <li class="menu-item"><a title="Register or Login" href="{{ route('login') }}">Login</a></li>
+                            <li class="menu-item"><a title="Register or Login" href="{{ route('register') }}">Register</a></li>
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -67,7 +71,7 @@
                             <a href="#" class="link-direction">
                                 <i class="fa fa-shopping-basket" aria-hidden="true"></i>
                                 <div class="left-info">
-                                    <span class="index">4 items</span>
+                                    <span class="index">{{ Auth::check() ? Auth::user()->cart->sum('quantity') . ' items' : '0 items' }}</span>
                                     <span class="title">CART</span>
                                 </div>
                             </a>
@@ -99,9 +103,9 @@
 
                 <div class="primary-nav-section">
                     <div class="container">
-                        <ul class="nav primary clone-main-menu" id="mercado_main" data-menuname="Main menu" >
+                        <ul class="nav primary clone-main-menu" id="mercado_main" data-menuname="Main menu">
                             <li class="menu-item home-icon">
-                                <a href="index.html" class="link-term mercado-item-title"><i class="fa fa-home" aria-hidden="true"></i></a>
+                                <a href="{{route('home')}}" class="link-term mercado-item-title"><i class="fa fa-home" aria-hidden="true"></i></a>
                             </li>
                             <li class="menu-item">
                                 <a href="{{route('aboutus')}}" class="link-term mercado-item-title">About Us</a>
@@ -110,7 +114,7 @@
                                 <a href="shop.html" class="link-term mercado-item-title">Shop</a>
                             </li>
                             <li class="menu-item">
-                                <a href="cart.html" class="link-term mercado-item-title">Cart</a>
+                                <a href="{{route('cart')}}" class="link-term mercado-item-title">Cart</a>
                             </li>
                             <li class="menu-item">
                                 <a href="checkout.html" class="link-term mercado-item-title">Checkout</a>

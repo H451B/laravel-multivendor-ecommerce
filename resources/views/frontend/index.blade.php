@@ -1,4 +1,4 @@
-<x-frontend.layouts.master_dashbord>
+<x-frontend.layouts.master_dashboard>
     <div class="container">
 
         <!--MAIN SLIDE-->
@@ -18,4 +18,4 @@
 
     </div>
 
-</x-frontend.layouts.master_dashbord>
+</x-frontend.layouts.master_dashboard>
