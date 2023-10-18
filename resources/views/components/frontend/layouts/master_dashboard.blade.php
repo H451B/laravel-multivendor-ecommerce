@@ -13,7 +13,7 @@
 
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" type="text/css" href="a{{asset('ui/frontend/ssets/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('ui/frontend/assets/css/bootstrap.min.css')}}">
 
     <link rel="stylesheet" type="text/css" href="{{asset('ui/frontend/assets/css/font-awesome.css')}}">
 
@@ -29,26 +29,27 @@
     <body>
     
     <!-- ***** Preloader Start ***** -->
-    <div id="preloader">
+    <!-- <div id="preloader">
         <div class="jumper">
             <div></div>
             <div></div>
             <div></div>
         </div>
-    </div>  
+    </div>   -->
     <!-- ***** Preloader End ***** -->
 
     
     
     
     <!-- ***** Header Area Start ***** -->
-    
+    <x-frontend.body.header/>
     <!-- ***** Header Area End ***** -->
 
     {{$slot}}
     
     
     <!-- ***** Footer Start ***** -->
+    <x-frontend.body.footer/>
     <!-- ***** Footer Ends ****** -->
     
 

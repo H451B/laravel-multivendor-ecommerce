@@ -1,4 +1,4 @@
-<x-frontend.layouts.master_dashbord>
+<x-frontend.layouts.master_dashboard>
 
     <div class="container">
         <div class="wrap-breadcrumb">
@@ -43,4 +43,4 @@
 
     </div>
 
-</x-frontend.layouts.master_dashbord>
+</x-frontend.layouts.master_dashboard>
