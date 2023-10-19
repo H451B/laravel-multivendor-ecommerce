@@ -108,19 +108,13 @@ $categories = App\Models\Category::orderBy('category_name','ASC')->get();
                                 <a href="{{route('home')}}" class="link-term mercado-item-title"><i class="fa fa-home" aria-hidden="true"></i></a>
                             </li>
                             <li class="menu-item">
-                                <a href="{{route('aboutus')}}" class="link-term mercado-item-title">About Us</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="shop.html" class="link-term mercado-item-title">Shop</a>
+                                <a href="{{route('shop')}}" class="link-term mercado-item-title">Shop</a>
                             </li>
                             <li class="menu-item">
                                 <a href="{{route('cart')}}" class="link-term mercado-item-title">Cart</a>
                             </li>
                             <li class="menu-item">
-                                <a href="checkout.html" class="link-term mercado-item-title">Checkout</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="contact-us.html" class="link-term mercado-item-title">Contact Us</a>
+                                <a href="{{route('checkout')}}" class="link-term mercado-item-title">Checkout</a>
                             </li>
                         </ul>
                     </div>

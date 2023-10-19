@@ -11,7 +11,8 @@
             <div class="wrap-iten-in-cart">
                 <h3 class="box-title">Products Name</h3>
                 <ul class="products-cart">
-                    @foreach(Auth::user()->cart as $cartItem)
+                    @if(auth()->check() && auth()->user()->cart)
+                    @foreach(auth()->user()->cart as $cartItem)
                     @php
                     $eachPrice = $cartItem->product->discount_price;
                     $subtotal = $eachPrice * $cartItem->quantity;
@@ -44,6 +45,9 @@
                         </div>
                     </li>
                     @endforeach
+                    @else
+                    <p>No items in the cart.</p>
+                    @endif
                 </ul>
             </div>
 
