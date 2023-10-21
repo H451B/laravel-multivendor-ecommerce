@@ -1,58 +1,53 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const increaseButtons = document.querySelectorAll('.btn-increase');
-    const reduceButtons = document.querySelectorAll('.btn-reduce');
-
-    increaseButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const input = this.previousElementSibling;
-            const newValue = parseInt(input.value, 10) + 1;
-            updateQuantity(input, newValue);
-        });
+    // Listen for changes in quantity when the quantity input field changes
+    $('.qty-input').on('input', function() {
+        updateSubtotal($(this));
     });
 
-    reduceButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const input = this.closest('.quantity-input').querySelector('.qty-input');
-            const newValue = Math.max(1, parseInt(input.value, 10) - 1);
-            updateQuantity(input, newValue);
-        });
+    // Listen for increase and reduce button clicks
+    $('.btn-increase, .btn-reduce').click(function(e) {
+        e.preventDefault();
+        var cartId = $(this).data('cart-id');
+        var quantityInput = $('.qty-input[data-cart-id="' + cartId + '"]');
+        var newQuantity = parseInt(quantityInput.val());
+
+        if ($(this).hasClass('btn-increase')) {
+            newQuantity++;
+        } else {
+            if (newQuantity > 1) {
+                newQuantity--;
+            }
+        }
+
+        quantityInput.val(newQuantity);
+        updateSubtotal(quantityInput);
     });
 
-    function updateQuantity(input, newValue) {
-        const cartId = input.dataset.cartId;
 
-        axios.post('/update-quantity', {
+function updateSubtotal(quantityInput) {
+    var cartId = quantityInput.data('cart-id');
+    var eachPrice = parseFloat(quantityInput.closest('.pr-cart-item').find('.each-price').text().replace('$', ''));
+    var newQuantity = parseInt(quantityInput.val());
+    var subtotal = eachPrice * newQuantity;
+
+    axios.post('/update-quantity', {
             cartId: cartId,
-            quantity: newValue,
-        })
-        .then(response => {
-            input.value = newValue;
-            updateSubtotal(cartId, newValue);
-            calculateTotal();
+            quantity: quantityInput.val(),
         })
         .catch(error => {
             console.error('Error updating quantity:', error);
         });
-    }
+    
+    // Update the subtotal text and total value
+    $('#subtotal-' + cartId).text('$' + subtotal.toFixed(2));
 
-    function updateSubtotal(cartId, quantity) {
-        const discountedPrice = parseFloat(document.querySelector(`[data-cart-id="${cartId}"] .produtc-price .price`).innerText.replace('$', ''));
-        const newSubtotal = discountedPrice * quantity;
-
-        document.querySelector(`[data-cart-id="${cartId}"] .sub-total .subttl`).innerText = `$${newSubtotal}`;
-    }
-
-    function calculateTotal() {
-        let totalPrice = 0;
-
-        document.querySelectorAll('.pr-cart-item').forEach(item => {
-            const quantity = parseInt(item.querySelector('.quantity-input input').value, 10);
-            const discountedPrice = parseFloat(item.querySelector('.produtc-price .price').innerText.replace('$', ''));
-            const subtotal = discountedPrice * quantity;
-            totalPrice += subtotal;
-        });
-
-        document.getElementById('subtotal').innerText = `$${totalPrice.toFixed(2)}`;
-        document.getElementById('total').innerText = `$${totalPrice.toFixed(2)}`;
-    }
+    // Calculate and update the total
+    var total = 0;
+    $('.qty-input').each(function() {
+        var itemTotal = parseFloat($(this).closest('.pr-cart-item').find('.price.subttl').text().replace('$', ''));
+        total += itemTotal;
+    });
+    $('#newsubtotal').text('$' + total.toFixed(2));
+    $('#newtotal').text('$' + total.toFixed(2));
+}
 });

@@ -1,6 +1,7 @@
 @php
 
 $categories = App\Models\Category::orderBy('category_name','ASC')->get();
+$currentRoute = request()->route()->getName();
 
 @endphp
 
@@ -35,7 +36,7 @@ $categories = App\Models\Category::orderBy('category_name','ASC')->get();
                     <div class="wrap-logo-top left-section">
                         <a href="{{route('home')}}" class="link-to-home">
                             <!-- <img src="{{asset('ui/frontend/assets/images/logo-top-1.png')}}" alt="mercado"> -->
-                            <p style="font-size: 4rem; font-weight:bolder; color:green;">eBazar</p>
+                            <p style="font-size: 4rem; font-weight:bolder; color:#0BDA51;">eBazar</p>
                         </a>
                     </div>
 
@@ -104,16 +105,18 @@ $categories = App\Models\Category::orderBy('category_name','ASC')->get();
                 <div class="primary-nav-section">
                     <div class="container">
                         <ul class="nav primary clone-main-menu" id="mercado_main" data-menuname="Main menu">
-                            <li class="menu-item home-icon">
-                                <a href="{{route('home')}}" class="link-term mercado-item-title"><i class="fa fa-home" aria-hidden="true"></i></a>
+                            <li class="menu-item home-icon" style="{{ $currentRoute === 'home' ? 'background: #0BDA51' : 'background: transparent' }}">
+                                <a href="{{route('home')}}" class="link-term mercado-item-title">
+                                    <i class="fa fa-home" aria-hidden="true"></i>
+                                </a>
                             </li>
-                            <li class="menu-item">
+                            <li class="menu-item" style="{{ $currentRoute === 'shop' ? 'background: #0BDA51' : 'background: transparent' }}">
                                 <a href="{{route('shop')}}" class="link-term mercado-item-title">Shop</a>
                             </li>
-                            <li class="menu-item">
+                            <li class="menu-item" style="{{ $currentRoute === 'cart' ? 'background: #0BDA51' : 'background: transparent' }}">
                                 <a href="{{route('cart')}}" class="link-term mercado-item-title">Cart</a>
                             </li>
-                            <li class="menu-item">
+                            <li class="menu-item" style="{{ $currentRoute === 'checkout' ? 'background: #0BDA51' : 'background: transparent' }}">
                                 <a href="{{route('checkout')}}" class="link-term mercado-item-title">Checkout</a>
                             </li>
                         </ul>
